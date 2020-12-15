@@ -11,7 +11,7 @@ var dado1 = Math.floor(Math.random() * (max + 1 - min) + min);
 var dado2 = Math.floor(Math.random() * (max + 1 - min) + min);
 
 for (var i = 0; i < mailArray.length; i++) {
-  if(mailArray[i] === 'nome@gmail.com'){  //check della mail
+  if(mailArray[i] === mail){  //check della mail
     presentazione.innerText = 'Giochiamo, allora!';  //presentazione
     cliccabile.innerText = 'Clicca qui per lanciare!';
     cliccabile.addEventListener('click', //elemento cliccabile, lancio dadi
@@ -26,5 +26,7 @@ for (var i = 0; i < mailArray.length; i++) {
           esito.innerText = 'Strano, abbiamo pareggiato!'; //pareggio
         }
       })
-  } 
+  } else if (mailArray[i] !== mail){
+    presentazione.innerText = 'Non sei registrato, spiacente ma non puoi giocare!'
+  }
 }
