@@ -4,29 +4,32 @@ var cliccabile = document.getElementById('btn');
 var dadopg = document.getElementById('dado-pg');
 var dadopc = document.getElementById('dado-pc');
 var esito = document.getElementById('esito');
-var mailArray = ['nome@gmail.com', 'nome@hotmail.com', 'nome@yahoo.com'];
+var mailArray = ['nome@gmail.com', 'nome@hotmail.com', 'nome@yahoo.com',];
+var mailCheck;
 var min = 1;
 var max = 6;
 var dado1 = Math.floor(Math.random() * (max + 1 - min) + min);
 var dado2 = Math.floor(Math.random() * (max + 1 - min) + min);
-
 for (var i = 0; i < mailArray.length; i++) {
   if(mailArray[i] === mail){  //check della mail
-    presentazione.innerText = 'Giochiamo, allora!';  //presentazione
-    cliccabile.innerText = 'Clicca qui per lanciare!';
-    cliccabile.addEventListener('click', //elemento cliccabile, lancio dadi
-      function(){
-        dadopg.innerText = dado1;
-        dadopc.innerText = dado2;
-        if (dado1 > dado2) {
-          esito.innerText = 'Complimenti, hai vinto!'; //se dado1 è maggiore, allora ho vinto
-        } else if (dado1 < dado2) {
-          esito.innerText = 'Peccato, hai perso!'; //se dado2 è maggiore, allora ho perso
-        } else if (dado1 === dado2) {
-          esito.innerText = 'Strano, abbiamo pareggiato!'; //pareggio
-        }
-      })
-  } else if (mailArray[i] !== mail){
-    presentazione.innerText = 'Non sei registrato, spiacente ma non puoi giocare!'
+    mailCheck = true;
   }
+}
+if (mailCheck) {
+  presentazione.innerText = 'Giochiamo, allora!';  //presentazione
+  cliccabile.innerText = 'Clicca qui per lanciare!';
+  cliccabile.addEventListener('click', //elemento cliccabile, lancio dadi
+    function(){
+      dadopg.innerText = dado1;
+      dadopc.innerText = dado2;
+      if (dado1 > dado2) {
+        esito.innerText = 'Complimenti, hai vinto!'; //se dado1 è maggiore, allora ho vinto
+      } else if (dado1 < dado2) {
+        esito.innerText = 'Peccato, hai perso!'; //se dado2 è maggiore, allora ho perso
+      } else {
+        esito.innerText = 'Strano, abbiamo pareggiato!'; //pareggio
+      }
+    })
+} else {
+  presentazione.innerText = 'Non sei registrato, quindi non puoi giocare!';
 }
